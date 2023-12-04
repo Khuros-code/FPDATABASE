@@ -25,7 +25,7 @@ if page == "Edit Data":
     if st.button('Tambah Data'):
         with conn.session as session:
             query = text('INSERT INTO fatalities (patient_name, date_of_event, age, citizenship, event_location, event_location_district, event_location_region, date_of_death, gender, type_of_injury) \
-                          VALUES (:1, :2, :3, :4, :5, :6, :7, :8), :9, :10;')
+                          VALUES (:1, :2, :3, :4, :5, :6, :7, :8, :9, :10;')
             session.execute(query, {'1':'', '2':'', '3':'', '4':'[]', '5':'', '6':'', '7':'', '8':'', '9':None, '10':None})
             session.commit()
 
@@ -47,14 +47,14 @@ if page == "Edit Data":
             with st.form(f'data-{id}'):
                 patient_name_baru = st.text_input("patient_name", patient_name_lama)
                 date_of_event_baru = st.date_input("date_of_event", date_of_event_lama)
-                age_baru = st.integer_input("age", age_lama)
+                age_baru = st.number_input("age", age_lama)
                 citizenship_baru = st.text_input("citizenship", citizenship_lama)
                 event_location_baru = st.text_input("event_location", event_location_lama)
                 event_location_district_baru = st.selectbox("event_location_district", list_event_location_district, list_event_location_district.index(event_location_district_lama))
                 event_location_region_baru = st.text_input("event_location_region", event_location_region_lama)
                 date_of_death_baru = st.date_input("date_of_death", date_of_death_lama)
                 gender_baru = st.selectbox("gender", list_gender, list_gender.index(gender_lama))
-                type_of_injury_baru = st.trxt_input("type_of_injury", type_of_injury_lama)
+                type_of_injury_baru = st.text_input("type_of_injury", type_of_injury_lama)
               
                 
                 col1, col2 = st.columns([1, 6])
